@@ -1,0 +1,22 @@
+body {
+    color: yellow;
+    background: lightblue;
+    text-align: center;
+    background-image: url("../assets/batman.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* this had been ignored in index.html
+#stupid-link a{
+    color: indianred;
+}
+*/
+
+.a a {
+    text-align: left;
+    color: yellow;
+}
+
+.b a{
+    color: orange;
+}
