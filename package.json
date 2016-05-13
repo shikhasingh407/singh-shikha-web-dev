@@ -1,0 +1,29 @@
+{
+  "name": "singh-shikha-web-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "mongoose": "^4.4.16",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jannunzi/web-dev-template.git"
+  },
+  "author": "Shikha Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jannunzi/web-dev-template/issues"
+  },
+  "homepage": "https://github.com/jannunzi/web-dev-template#readme"
+}
