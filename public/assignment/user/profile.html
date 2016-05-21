@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-               <b>Profile</b>
+                <strong>Profile</strong>
             </a>
             <p class="navbar-text pull-right">
                 <a href="#" class="navbar-link">
@@ -28,14 +28,18 @@
 </nav>
 
 <div class="container-fluid">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Good job!</strong> Your awesome profile has been saved.
+    </div>
     <form role="form">
-          <div class="form-group">
-              <label for="usr">Username:</label>
-              <input type="text" class="form-control" id="usr" placeholder="Username">
-          </div>
-          <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="shikhasingh@gmail.com">
+        <div class="form-group">
+            <label for="usr">Username:</label>
+            <input type="text" class="form-control" id="usr" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="shikhasingh@gmail.com">
         </div>
         <div class="form-group">
             <label for="first">First Name:</label>
@@ -46,7 +50,7 @@
             <input type="text" class="form-control" id="last" placeholder="Singh">
         </div>
         <div class="form-group">
-            <a class="btn btn-primary btn-block" href="#">Websites</a>
+            <a class="btn btn-primary btn-block" href="../website/website-list.html">Websites</a>
         </div>
         <div class="form-group">
             <a class="btn btn-danger btn-block" href="login.html">Logout</a>

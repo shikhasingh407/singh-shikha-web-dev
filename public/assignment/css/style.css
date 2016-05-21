@@ -9,3 +9,11 @@ body{
 p.navbar-text.pull-right{
     margin-right: 15px;
 }
+
+p.navbar-text.pull-left{
+    margin-left: 15px;
+}
+
+li.borderless {
+    border: none;
+}
