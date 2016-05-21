@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <title>Websites</title>
+    <title>Widget Edit</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
@@ -15,16 +15,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="page-new.html" class="navbar-link">
+                <a href="widget-chooser.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                <strong>New Page</strong>
+                <strong>Widget Edit</strong>
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
+                <a href="widget-list.html" class="navbar-link">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -37,14 +37,19 @@
 <div class="container">
     <form role="form">
         <div class="form-group">
-            <label for="pname">Name:</label>
-            <input type="text" class="form-control" id="pname" placeholder="Page Name">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name">
         </div>
         <div class="form-group">
-            <label for="tname">Title:</label>
-            <input type="text" class="form-control" id="tname" placeholder="Title Name">
+            <label for="text">Text:</label>
+            <input type="text" class="form-control" id="text">
         </div>
-        </form>
+        <div class="form-group">
+            <label for="size">Size:</label>
+            <input type="number" class="form-control" id="size">
+        </div>
+        <a class="btn btn-danger btn-block" href="widget-list.html">Delete</a>
+    </form>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -53,6 +58,11 @@
             <div class="col-xs-3 text-center pull-right">
                 <a href="../user/profile.html">
                     <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+            <div class="col-xs-3 text-center pull-left">
+                <a href="../user/profile.html">
+                    <span class="glyphicon glyphicon-share-alt"></span>
                 </a>
             </div>
         </div>
