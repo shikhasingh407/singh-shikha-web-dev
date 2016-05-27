@@ -18,7 +18,7 @@
                <Strong>Websites</Strong>
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-new.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus">
                     </span>
                 </a>
@@ -27,14 +27,17 @@
     </div>
 </nav>
 
+{{model.websites}}
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item borderless">
-            <a href="../page/page-list.view.client.html">Gizmodo</a>
+        <li ng-reapeat="website in model.websites" class="list-group-item borderless">
+            <a href="../page/page-list.view.client.html">
+                {{website.name}}
+            </a>
             <a href="website-edit.view.client.html" class="pull-right">
                 <span class="glyphicon glyphicon-play"></span>
             </a>
-            <a href="website-edit.view.client.html" class="pull-right">
+            <a href="#/user/{{website.developerId}}/website/{{website._id"}} class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>
