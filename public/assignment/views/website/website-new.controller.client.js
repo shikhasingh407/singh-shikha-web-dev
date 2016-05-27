@@ -1,9 +1,9 @@
 (function() {
     angular
-        .modile("WebAppMaker")
+        .module("WebAppMaker")
         .controller("NewWebsiteController", NewWebsiteController);
 
-    function NewWebsiteListController($location, $routeParams, WebsiteService) {
+    function NewWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.createWebsite = createWebsite;
@@ -11,7 +11,7 @@
         function createWebsite(name, description) {
             var newWebsite = WebsiteService.createWebsite(vm.userId, name, description);
             if(newWebsite) {
-                $location.url("/user/"+vm.userId+ "/websites");
+                $location.url("/user/"+vm.userId+ "/website");
             } else {
                 vm.error= "Unable to create the website";
             }

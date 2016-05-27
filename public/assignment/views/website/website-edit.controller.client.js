@@ -1,9 +1,9 @@
 (function() {
     angular
-        .modile("WebAppMaker")
-        .controller("EditWebsiteController", NewWebsiteController);
+        .module("WebAppMaker")
+        .controller("EditWebsiteController", EditWebsiteController);
 
-    function NewWebsiteListController($location, $routeParams, WebsiteService) {
+    function EditWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
@@ -12,7 +12,7 @@
         function deleteWebsite (websiteId) {
             var result = WebsiteService.deleteWebsite(websiteId);
             if(result) {
-                $location.url("/user/"+vm.userId+ "/websites");
+                $location.url("/user/"+vm.userId+ "/website");
             } else {
                 vm.error= "Unable to delete the website";
             }

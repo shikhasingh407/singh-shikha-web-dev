@@ -20,6 +20,7 @@
             //     users[index].firstName = newUser.firstName;
             //     users[index].lastName = newUser.lastName;
             // }
+            UserService.updateUser(id, newUser);
         }
     }
 })();

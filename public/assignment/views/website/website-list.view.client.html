@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <title>Websites</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -30,44 +17,13 @@
 {{model.websites}}
 <div class="container">
     <ul class="list-group">
-        <li ng-reapeat="website in model.websites" class="list-group-item borderless">
+        <li ng-repeat="website in model.websites" class="list-group-item borderless">
             <a href="../page/page-list.view.client.html">
                 {{website.name}}
             </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-            <a href="#/user/{{website.developerId}}/website/{{website._id"}} class="pull-right">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../page/page-list.view.client.html">Blogger</a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../page/page-list.view.client.html">Facebook</a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../page/page-list.view.client.html">Twitter</a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-
         </li>
     </ul>
 </div>
@@ -86,6 +42,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

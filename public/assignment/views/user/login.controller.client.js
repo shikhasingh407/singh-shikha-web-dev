@@ -3,10 +3,10 @@
         .module("WebAppMaker")
         .controller("LoginController", LoginController);
 
-    function LoginController($location) {
+    function LoginController($location, UserService) {
         var vm = this;
         vm.login = function (username, password) {
-            var user = UserService.fundUserByUsernameAndPassword(username, password);
+            var user = UserService.findUserByUsernameAndPassword(username, password);
             if(user) {
                 $location.url("/profile/" + user._id);
             } else {

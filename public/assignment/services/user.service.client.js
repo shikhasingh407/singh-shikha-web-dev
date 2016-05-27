@@ -1,6 +1,6 @@
 (function(){
     angular
-        .model("WebAppMaker")
+        .module("WebAppMaker")
         .factory("UserService", UserService);
     
     var users = [
@@ -33,7 +33,16 @@
         
         function createUser(newUser) {}
         function deleteUser (userId) {}
-        function updateUser (id, newUser) {}
+        function updateUser (id, newUser) {
+            for(var i in users){
+                if(users[i]._id === id){
+                    users[index].firstName = newUser.firstName;
+                    users[index].lastName = newUser.lastName;
+                    return true;
+                }
+            }
+            return false;
+        }
         function findUserById(id) {
             for(var i in users) {
                 if(users[i]._id === id) {
@@ -46,7 +55,7 @@
             for(var i in users) {
                 if (users[i].username === username && users[i].password === password)
                 {
-                return userr[i];
+                return users[i];
                 }
             }
             return null;
