@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <title>Pages</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -24,7 +11,7 @@
                <Strong>Pages</Strong>
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-new.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus">
                     </span>
                 </a>
@@ -33,35 +20,14 @@
     </div>
 </nav>
 
+
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item borderless">
-            <a href="../widget/widget-list.view.client.html">Blogpost</a>
-             <a href="page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
+        <li ng-repeat="page in model.pages" class="list-group-item borderless">
+            <a href="../widget/widget-list.view.client.html">
+                {{page.name}}
             </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../widget/widget-list.view.client.html">Blog</a>
-            <a href="page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../widget/widget-list.view.client.html">Home</a>
-            <a href="page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../widget/widget-list.view.client.html">About</a>
-            <a href="page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item borderless">
-            <a href="../widget/widget-list.view.client.html">Contact us</a>
-            <a href="page-edit.view.client.html" class="pull-right">
+             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>
@@ -82,6 +48,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>
