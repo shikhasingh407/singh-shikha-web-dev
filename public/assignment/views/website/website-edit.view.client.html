@@ -11,7 +11,7 @@
                 <strong>Edit Website</strong>
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-list.view.client.html" class="navbar-link">
+                <a ng-click="model.updateWebsite()" class="navbar-link">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -25,13 +25,13 @@
     <form role="form">
         <div class="form-group">
             <label for="name">Website Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <input ng-model="model.website.name" type="text" class="form-control" id="name" placeholder="Name">
         </div>
         <div class="form-group">
             <label for="desc">Website Description:</label>
-            <textarea rows="4" type="desc" class="form-control" id="desc" placeholder="Description"></textarea>
+            <textarea ng-model="model.website.desc" rows="4" type="desc" class="form-control" id="desc" placeholder="Description"></textarea>
         </div>
-        <a class="btn btn-danger btn-block" ngclick="model.deleteWebsite(model.websiteId)">Delete</a>
+        <a class="btn btn-danger btn-block" ng-click="model.deleteWebsite()">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

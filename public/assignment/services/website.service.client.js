@@ -16,20 +16,34 @@
         var api = {
             createWebsite: createWebsite,
             findWebsitesForUserId: findWebsitesForUserId,
+            findWebsiteByWebsiteId: findWebsiteByWebsiteId,
+            updateWebsite: updateWebsite,
             deleteWebsite: deleteWebsite
         };
         return api;
+
         
-        function deleteWebsite(websiteId) {
+        function deleteWebsite(id) {
             for(var i in websites) {
-                if(websites[i]._id === websiteId) {
+                if(websites[i]._id === id) {
                     websites.splice(i, 1);
                     return true;
                 }
             }
             return false;
-        }   
-        
+        }
+
+
+        function updateWebsite (id, newWebsite) {
+            for(var i in websites){
+                if(websites[i]._id === id){
+                    websites[i] = newWebsite;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         function createWebsite(developerId, name, desc) {
             var newWebsite = {
                 _id : (new Date()).getTime()+"",
@@ -48,6 +62,15 @@
                 }
             }
         return resultSet;
+        }
+
+        function findWebsiteByWebsiteId(websiteId) {
+            for(var i in websites) {
+                if(websites[i]._id === websiteId) {
+                    return websites [i];
+                }
+            }
+            return null;
         }
         
     }

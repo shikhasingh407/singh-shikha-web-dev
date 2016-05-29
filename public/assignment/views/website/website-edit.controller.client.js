@@ -7,6 +7,8 @@
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
+        vm.website = WebsiteService.findWebsiteByWebsiteId(vm.websiteId);
+        vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
 
         function updateWebsite() {
@@ -19,7 +21,7 @@
         }
         
         function deleteWebsite (websiteId) {
-            var result = WebsiteService.deleteWebsite(websiteId);
+            var result = WebsiteService.deleteWebsite(vm.websiteId);
             if(result) {
                 $location.url("/user/"+vm.userId+ "/website");
             } else {
