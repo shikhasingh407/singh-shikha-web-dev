@@ -5,9 +5,9 @@
 
     function ProfileController($routeParams, UserService) {
         var vm = this;
+        var id = $routeParams.id;
 
         vm.updateUser = updateUser;
-        var id = $routeParams.id;
 
         function init() {
             vm.user = UserService.findUserById(id);
@@ -15,13 +15,10 @@
 
         init();
 
-        function updateUser(newUser) {
-            console.log(newUser);
-            users[index].firstName = newUser.firstName;
-            users[index].lastName = newUser.lastName;
+        function updateUser(newUser){
+            UserService.updateUser(id, newUser);
         }
-
-        UserService.updateUser(id, newUser);
     }
+
 
 })();

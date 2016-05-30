@@ -12,11 +12,11 @@
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
 
-        // function init() {
-        //     vm.page = PageService.findPageByPageId(pageId);
-        // }
-        //
-        // init();
+        function init() {
+            vm.page = PageService.findPageByPageId(vm.pageId);
+        }
+
+        init();
 
         function updatePage() {
             var result = PageService.updatePage(vm.pageId, vm.page);

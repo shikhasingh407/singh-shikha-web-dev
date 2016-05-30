@@ -5,6 +5,9 @@
 
     function Config($routeProvider){
         $routeProvider
+            .when("/", {
+                templateUrl: "views/home.htnl"
+            })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",
@@ -13,7 +16,7 @@
             .when("/register", {
                 templateUrl: "views/user/register.view.client.html"
             })
-            .when("/profile/:id", {
+            .when("/user/:id", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
@@ -34,7 +37,7 @@
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page", {
-            templateUrl: "views/page/page-list.view.client.html",
+                templateUrl: "views/page/page-list.view.client.html",
                 controller: "PageListController",
                 controllerAs: "model"
             })
@@ -48,9 +51,19 @@
                 controller: "EditPageController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget",{
                 templateUrl: "views/widget/widget-list.view.client.html",
                 controller: "WidgetListController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new",{
+                templateUrl: "views/widget/widget-chooser.view.client.html",
+                controller: "WidgetChooserController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId",{
+                templateUrl: "views/widget/widget-edit.view.client.html",
+                controller: "EditWidgetController",
                 controllerAs: "model"
             })
             .otherwise({

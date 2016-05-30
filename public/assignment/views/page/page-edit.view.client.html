@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="page-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="page-edit.view.client.html">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}">
                 <strong>Edit Page</strong>
             </a>
             <p class="navbar-text pull-right">
@@ -37,14 +37,14 @@
     <div class="container">
         <div class="row navbar-text">
             <div class="col-xs-3 text-center pull-right">
-                <a href="../user/profile.view.client.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
             <div class="col-xs-3 text-center"></div>
             <div class="col-xs-3 text-center"></div>
             <div class="col-xs-3 text-center pull-left">
-                <a href="../user/profile.view.client.html">
+                <a href="#">
                     <span class="glyphicon glyphicon-share-alt"></span>
                 </a>
             </div>

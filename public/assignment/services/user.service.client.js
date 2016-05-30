@@ -36,8 +36,8 @@
         function updateUser (id, newUser) {
             for(var i in users){
                 if(users[i]._id === id){
-                    users[index].firstName = newUser.firstName;
-                    users[index].lastName = newUser.lastName;
+                    users[i].firstName = newUser.firstName;
+                    users[i].lastName = newUser.lastName;
                     return true;
                 }
             }

@@ -9,10 +9,10 @@
         vm.websiteId = $routeParams.websiteId;
         vm.createPage = createPage;
 
-        function createPage(websiteId, name, title) {
+        function createPage(name, title) {
             var newPage = PageService.createPage(vm.websiteId, name, title);
             if(newPage) {
-                $location.url("user/"+vm.userId+ "/website"+vm.websiteId+ "/page");
+                $location.url("user/"+vm.userId+ "/website/"+vm.websiteId+ "/page");
             } else {
                 vm.error = "Unable to create the Page";
             }
