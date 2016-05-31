@@ -43,7 +43,7 @@
             <label for="upload">Upload:</label>
             <input type="file" class="form-control" id="upload" accept="image/*">
         </div>
-        <a class="btn btn-primary btn-block">Upload Image</a>
+        <a class="btn btn-primary btn-block" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Upload Image</a>
         <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
     </form>
 </div>

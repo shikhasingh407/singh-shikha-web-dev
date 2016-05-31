@@ -23,16 +23,26 @@
         function updateUser(id, newUser) {
             for (var i in users) {
                 if(users[i]._id === id) {
-                    users[i].firstName = newUser.firstName;
-                    users[i].lastName = newUser.lastName;
+                    users[i] = newUser;
                     return true;
                 }
             }
             return false;
         }
         
-        function createUser(newUser) {}
-        function deleteUser (userId) {}
+        function createUser(newUser){
+            users.push(newUser);
+            return true;
+        }
+        function deleteUser (userId) {
+            for(var i in users){
+                if(users[i]._id === id){
+                    users.splice(i, 1);
+                    return true;
+                }
+            }
+            return false;
+        }
         function updateUser (id, newUser) {
             for(var i in users){
                 if(users[i]._id === id){
