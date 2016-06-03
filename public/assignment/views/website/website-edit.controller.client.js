@@ -5,11 +5,21 @@
 
     function EditWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
+
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
-        vm.website = WebsiteService.findWebsiteByWebsiteId(vm.websiteId);
+
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
+
+        function init(){
+            WebsiteService
+                .findWebsiteByWebsiteId(vm.websiteId)
+                .then(function(response){
+                    vm.website = response.data;
+                });
+        }
+        init();
 
         function updateWebsite() {
             var result = WebsiteService.updateWebsite(vm.websiteId, vm.website);

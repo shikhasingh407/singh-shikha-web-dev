@@ -14,16 +14,21 @@
                     username: username,
                     password: password
                 };
+                UserService
+                    .createUser(newUser)
+                    .then(function(response){
+                        var user = response.data;
 
-                if(UserService.createUser(newUser)){
-                    $location.url("/user/"+newUser._id);
-                }
-                else{
-                    vm.error = "Unable to register the user";
-                }
+                        if(user){
+                            $location.url("/user/"+newUser._id);
+                        }
+                        else{
+                            vm.error = "Unable to register the user";
+                        }
+                    });
             }
             else
-                vm.error = "Passwords don't match";
+                vm.error = "Passwords don't match"
         }
     }
 })();
