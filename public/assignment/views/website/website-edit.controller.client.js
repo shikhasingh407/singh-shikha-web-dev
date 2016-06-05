@@ -33,7 +33,7 @@
         function deleteWebsite (websiteId) {
             var result = WebsiteService.deleteWebsite(vm.websiteId);
             if(result) {
-                $location.url("/user/"+vm.userId+ "/website");
+                $location.url("/user/"+vm.userId-+ "/website");
             } else {
                 vm.error= "Unable to delete the website";
             }

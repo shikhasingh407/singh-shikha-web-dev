@@ -13,7 +13,6 @@
         };
         return api;
 
-
         function updateWebsite(id, newWebsite){
             var url = "/api/website/" + id;
             return $http.put(url, newWebsite);

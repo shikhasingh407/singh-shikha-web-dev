@@ -8,14 +8,17 @@
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
         vm.pageId = $routeParams.pageId;
-        vm.page = PageService.findPageByPageId(vm.pageId);
+       // vm.page = PageService.findPageByPageId(vm.pageId);
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
 
-        function init() {
-            vm.page = PageService.findPageByPageId(vm.pageId);
+        function init(){
+            PageService
+                .findPageByPageId(vm.pageId)
+                .then(function(response){
+                    vm.page = response.data;
+                });
         }
-
         init();
 
         function updatePage() {

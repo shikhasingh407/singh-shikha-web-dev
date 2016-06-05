@@ -1,9 +1,4 @@
-(function ()
-{
-    angular
-        .module("WebAppMaker")
-        .factory("WidgetService", WidgetService);
-
+module.exports = function(app){
     var widgets = [
         {"_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         {"_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -18,6 +13,12 @@
         },
         {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
+
+    app.post("/api/user", createUser);
+    app.get("/api/user", getUsers);
+    app.get("/api/user/:userId", findUserById);
+    app.put("/api/user/:userId", updateUser);
+    app.delete("/api/user/:userId", deleteUser);
   
     function WidgetService() {
         var api = {
@@ -78,4 +79,4 @@
         }
 
     }
-})();
+};
