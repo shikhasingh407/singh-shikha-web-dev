@@ -1,24 +1,22 @@
+(19 sloc)  691 Bytes
 (function(){
     angular
         .module("WebAppMaker")
-        .factory("FlickrService", FlickrService);
+        .controller("FlickrImageSearchController", FlickrImageSearchController);
 
-    var key = "c71a3201be5abbb1a46671ae0ab5b31c";
-    var secret = "cff9061397437c41";
-    var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
+    function FlickrImageSearchController($routeParams, FlickrService){
+        var vm = this;
+        vm.searchPhotos = searchPhotos;
 
-    function FlickrService($http){
-        var api = {
-            searchPhotos: searchPhotos
-        };
-
-        return api;
-
-        function searchPhotos(searchTerm){
-            var url = urlBase
-                .replace("API_KEY", key)
-                .replace("TEXT", searchTerm);
-            return $http.get(url);
+        function searchPhotos(searchText) {
+            FlickrService
+                .searchPhotos(searchText)
+                .then(function(response){
+                    data = response.data.replace("jsonFlickrApi(","");
+                    data = data.substring(0,data.length - 1);
+                    data = JSON.parse(data);
+                    vm.photos = data.photos;
+                });
         }
     }
 })();

@@ -48,7 +48,7 @@ module.exports = function(app){
         function findPageById(req, res) {
             var pageId = req.params.pageId;
             for (var i in pages) {
-                if (pages[i]._id === id) {
+                if (pages[i]._id === pageId) {
                     res.json(pages[i]);
                     return;
                 }
