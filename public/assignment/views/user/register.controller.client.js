@@ -10,7 +10,7 @@
         function createUser(username, password, vpassword) {
             if(password === vpassword){
                 var newUser = {
-                    _id: (new Date()).getTime()+"",
+                   // _id: (new Date()).getTime()+"",
                     username: username,
                     password: password
                 };
