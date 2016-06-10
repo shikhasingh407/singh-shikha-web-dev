@@ -10,14 +10,13 @@
 
         function createWebsite(name, description){
             var newWebsite = {
-                _id: (new Date()).getTime()+"",
+                //_id: (new Date()).getTime()+"",
                 name: name,
-                description: description,
-                developerId: vm.userId
+                description: description
             };
 
             WebsiteService
-                .createWebsite(newWebsite)
+                .createWebsite(vm.userId, newWebsite)
                 .then(function(response){
                     var newWebsite = response.data;
                     if(newWebsite){

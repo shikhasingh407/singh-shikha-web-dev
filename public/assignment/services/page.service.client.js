@@ -24,8 +24,8 @@
             return $http.delete(url);
         }
 
-        function createPage(newPage) {
-            return $http.post("/api/website/:websiteId/page", newPage);
+        function createPage(websiteId, newPage) {
+            return $http.post("/api/website/"+websiteId+ "/page", newPage);
         }
 
         function findPageByPageId(id) {

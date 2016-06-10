@@ -34,7 +34,7 @@
         }
 
         function findUserByUsernameAndPassword(username, password){
-            var url = "/api/user?username="+username+"&password"+password;
+            var url = "/api/user?username="+username+"&password="+password;
             return $http.get(url);
         }
     }

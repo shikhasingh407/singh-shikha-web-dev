@@ -6,7 +6,9 @@ module.exports = function() {
     mongoose.connect('mongodb://localhost/webDev');
 
     var models = {
-        userModel: require("./user/user.model.server")()
+        userModel: require("./user/user.model.server")(),
+        websiteModel: require("./website/website.model.server")(),
+        pageModel: require("./page/page.model.server")()
     };
     return models;
 };

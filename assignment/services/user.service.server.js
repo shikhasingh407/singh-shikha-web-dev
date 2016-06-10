@@ -90,7 +90,7 @@ module.exports = function(app, models) {
                 function(error) {
                     res.statusCode(404).send(error);
                 }
-            )
+            );
         // for(var i in users){
         //     if(users[i]._id === id){
         //         res.json(users[i]);

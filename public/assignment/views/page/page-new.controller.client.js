@@ -11,14 +11,14 @@
 
         function createPage(name, title){
             var newPage = {
-                _id: (new Date()).getTime()+"",
+               // _id: (new Date()).getTime()+"",
                 name: name,
-                title: title,
-                websiteId: vm.websiteId
+                title: title
+
             };
 
             PageService
-                .createPage(newPage)
+                .createPage(vm.websiteId, newPage)
                 .then(function(response){
                     var newPage = response.data;
                     if(newPage){

@@ -23,8 +23,8 @@
             return $http.delete(url);
         }
 
-        function createWebsite(newWebsite){
-            return $http.post("/api/user/:userId/website", newWebsite);
+        function createWebsite(userId, newWebsite){
+            return $http.post("/api/user/"+userId+ "/website", newWebsite);
         }
 
         function findWebsiteByWebsiteId(websiteId){
