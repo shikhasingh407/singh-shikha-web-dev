@@ -12,9 +12,10 @@
 
         function createWidget(widgetType) {
             var newWidget = {
-                _id: (new Date().getTime() + ""),
+               // _id: (new Date().getTime() + ""),
                 widgetType: widgetType,
-                pageId: vm.pageId
+                pageId: vm.pageId,
+                name: "Default"
             };
 
             WidgetService
