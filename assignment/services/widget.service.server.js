@@ -1,4 +1,7 @@
-module.exports = function(app){
+module.exports = function(app, models){
+
+    var widgetModel = models.widgetModel;
+
     var widgets = [
         {"_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         {"_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -27,44 +30,61 @@ module.exports = function(app){
 
     function createWidget(req, res) {
         var newWidget = req.body;
-        widgets.push(newWidget);
-        res.sendStatus(200);
+        var pageId = req.params.pageId;
+
+        widgetModel
+            .createWidget(pageId, widget)
+            .then(
+                function(widget) {
+                    res.json(widget);
+                },
+                function(err){
+                    res.statusCode(400).send(err);
+                }
+            );
     }
 
         function updateWidget (req, res) {
-            var id = req.params.widgetId;
+            var widgetId = req.params.widgetId;
             var newWidget = req.body;
-            for(var i in widgets){
-                if(widgets[i]._id === id){
-                    widgets[i] = newWidget;
-                    res.sendStatus(200);
-                    return;
-                }
-            }
-            res.sendStatus(400);
+            widgetModel
+                .updateWidget(widgetId, newWidget)
+                .then(
+                    function(stats){
+                        res.sendStatus(200);
+                    },
+                    function(err){
+                        res.statusCode(404).send(err);
+                    }
+                );
         }
 
         function deleteWidget(req, res) {
             var id = req.params.widgetId;
-            for(var i in widgets) {
-                if(widgets[i]._id === id) {
-                    widgets.splice(i, 1);
-                    res.sendStatus(200);
-                    return;
-                }
-            }
-            res.sendStatus(400);
+            widgetModel
+                .deleteWidget(id)
+                .then(
+                    function(stats){
+                        res.sendStatus(200);
+                    },
+                    function(err){
+                        res.statusCode(404).send(err);
+                    }
+                );
         }
 
         function findAllWidgetsForPage(req, res) {
-            var resultSet = [];
             var pageId = req.params.pageId;
-            for(var i in widgets) {
-                if(widgets[i].pageId === pageId) {
-                    resultSet.push(widgets[i]);
-                }
-            }
-            res.send(resultSet);
+            widgetModel
+                .findAllWidgetsForPage(pageId)
+                .then(
+                    function(widgets){
+                        res.json(widgets);
+                    },
+                    function(err){
+                        res.statusCode(404).send(err);
+                    }
+                );
         }
 
     function findWidgetById(req, res){
@@ -89,7 +109,9 @@ module.exports = function(app){
         var size = myFile.size;
         var mimetype = myFile.mimetype;
 
-        var id = req.params.widgetId;
+        var userId         = req.body.userId;
+        var websiteId      = req.body.websiteId;
+        var pageId         = req.body.pageId;
 
         if(myFile == null){
             res.redirect("/assignment/#/user/"+ userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
@@ -101,7 +123,7 @@ module.exports = function(app){
             }
         }
 
-        res.redirect("/assignment/index.html#/user/:uid/website/:wid/page/:pid/widget/"+widgetId);
+        res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
     }
 
 };

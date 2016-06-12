@@ -26,8 +26,8 @@
             return $http.delete(url);
         }
 
-        function createWidget(newWidget){
-            return $http.post("/api/page/:pageId/widget", newWidget);
+        function createWidget(pageId, newWidget){
+            return $http.post("/api/page/" +pageId+ "/widget", newWidget);
         }
 
         function findWidgetByWidgetId(id){
