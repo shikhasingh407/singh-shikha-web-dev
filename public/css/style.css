@@ -1,0 +1,70 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+.navbar-header {
+    width : 100%;
+    height: 10%;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.navbar-footer {
+    width: 100%;
+    height: 10%;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+p.navbar-text.pull-right {
+    margin-right: 15px;
+}
+
+p.navbar-text.pull-left {
+    margin-left: 15px;
+}
+
+.jga-widget-tool {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.7;
+}
+
+li.borderless {
+    border: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+span.help-inline{
+    color:#D63301;
+    background-color: #FFCCBA;
+}
+
+div.ui-state-error-text.custom-err{
+    color:#D63301;
+    background-color: #FFCCBA;
+}

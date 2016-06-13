@@ -84,7 +84,7 @@ module.exports = function(app, models){
     function findWebsiteById(req, res){
         var websiteId = req.params.websiteId;
         websiteModel
-            .findWebsiteById(id)
+            .findWebsiteById(websiteId)
             .then(
                 function(website) {
                     res.send(website);

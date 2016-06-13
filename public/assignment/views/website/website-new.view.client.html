@@ -31,19 +31,17 @@
             <label for="desc">Website Description:</label>
             <textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc" placeholder="Add Details"></textarea>
         </div>
-</div>
+</form>
+    </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
-            <div class="col-xs-3 text-center"></div>
-            <div class="col-xs-3 text-center"></div>
-            <div class="col-xs-3 text-center"></div>
-            <div class="col-xs-3 text-center pull-right">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-right">
                 <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
-            </div>
+            </p>
         </div>
     </div>
 </nav>

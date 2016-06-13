@@ -1,8 +1,22 @@
 <div class="container">
-    <h1> Register </h1>
-    <input ng-model="username" type="text" placeholder= "Username" class="form-control" id="usr" >
-    <input ng-model="password" type="password" placeholder= "Password" class="form-control" id="pwd">
-    <input ng-model="vpassword" type="password" placeholder= "Verify password" class="form-control" id="vpwd">
-    <a class="btn btn-primary btn-block" ng-click="model.createUser(username, password, vpassword)">Register</a>
-    <a class="btn btn-danger btn-block" href="#/login">Cancel</a>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <h1>Register</h1>
+    <form name="registerForm" ng-app>
+        <div class="form-group" ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]">
+            <input name="username" ng-model="username" type="text" class="form-control" id="username" placeholder="Username" required>
+            <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Required</span>
+        </div>
+        <div class="form-group" ng-class="{true: 'error'}[submitted && registerForm.password.$error.required]">
+            <input name="password" ng-model="password" type="password" class="form-control" id="password" placeholder="Password" required>
+            <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Required</span>
+        </div>
+        <div class="form-group" ng-class="{true: 'error'}[submitted && registerForm.vpassword.$error.required]">
+            <input name="vpassword" ng-model="vpassword" type="password" class="form-control" id="vpassword" placeholder="Verify Password" required>
+            <span class="help-inline" ng-show="submitted && registerForm.vpassword.$error.required">*Required</span>
+        </div>
+        <a ng-disabled="registerForm.$invalid" class="btn btn-primary btn-block" ng-click="registerForm.$valid && model.createUser(username, password, vpassword); submitted=true">Register</a>
+        <a class="btn btn-danger btn-block" href="#/login">Cancel</a>
+    </form>
 </div>

@@ -42,13 +42,23 @@
                 <h6 ng-switch-when="6">{{widget.text}}</h6>
             </div>
                 <div ng-switch-when="IMAGE">
-                    <img ng-src="{{widget.url}}" width="100%"/>
+                    <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
                 </div>
                 <div ng-switch-when="HTML">
                     <div ng-bind-html="model.getSafeHtml(widget)"></div>
                 </div>
                 <div ng-switch-when="YOUTUBE">
                     <iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div ng-switch-when="TEXT INPUT">
+                    <div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                ['indent','outdent'],['html']]"></div>
+                    <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                           placeholder="{{widget.textInput.placeholder}}" class="form-control"/>
+                <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                          rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                          class="form-control">{{widget.text}}</textarea>
                 </div>
             <div ng-switch-default>
                 Unable to render
@@ -58,19 +68,13 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
-            <div class="col-xs-3 text-center">
-            </div>
-            <div class="col-xs-3 text-center">
-            </div>
-            <div class="col-xs-3 text-center">
-            </div>
-            <div class="col-xs-3 text-center">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-right">
                 <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
-            </div>
+            </p>
         </div>
     </div>
 </nav>
