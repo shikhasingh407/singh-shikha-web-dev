@@ -82,15 +82,19 @@ module.exports = function(app, models){
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        for (var i in widgets) {
-            if (widgets[i]._id === widgetId) {
-                widgets[i].url = "/uploads/" + filename;
-            }
-        }
+        var newWidget = {url: "/uploads/" + filename};
 
-        var url = "/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
-        console.log(url);
-        res.redirect(url);
+        widgetModel
+            .updateWidget(widgetId, newWidget)
+            .then(
+                function (stats) {
+                    res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+                },
+                function (error) {
+                    res.sendStatus(400);
+
+                }
+            );
     }
 
     function deleteWidget(req, res){

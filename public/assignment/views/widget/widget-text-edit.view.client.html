@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}">
+                Edit Widget
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget()" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <form role="form">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Gizmodo">
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input ng-model="model.widget.text" type="text" class="form-control" id="text" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label for="rows">Rows</label>
+                <input ng-model="model.widget.rows" type="number" class="form-control" id="rows" placeholder="4">
+            </div>
+            <div class="form-group">
+                <label for="placeholder">Placeholder</label>
+                <input ng-model="model.widget.placeholder" class="form-control" id="placeholder">
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" readonly class="form-control" value="Formatted"/>
+                <span class="input-group-addon">
+                    <input ng-model="model.widget.formatted" type="checkbox"/>
+                </span>
+                </div>
+            </div>
+        </form>
+        <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+    </form>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
