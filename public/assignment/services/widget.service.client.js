@@ -1,33 +1,31 @@
-(function ()
-{
+(function(){
     angular
         .module("WebAppMaker")
         .factory("WidgetService", WidgetService);
 
-
-  
-    function WidgetService($http) {
+    function WidgetService($http){
         var api = {
             findWidgetsForPageId: findWidgetsForPageId,
             findWidgetByWidgetId: findWidgetByWidgetId,
             createWidget: createWidget,
             updateWidget: updateWidget,
-            deleteWidget: deleteWidget
+            deleteWidget: deleteWidget,
+            reorderWidget: reorderWidget
         };
         return api;
 
-        function updateWidget(id, newWidget){
+        function updateWidget (id, newWidget) {
             var url = "/api/widget/" + id;
             return $http.put(url, newWidget);
         }
 
-        function deleteWidget(id){
+        function deleteWidget(id) {
             var url = "/api/widget/" + id;
             return $http.delete(url);
         }
 
-        function createWidget(pageId, newWidget){
-            return $http.post("/api/page/" +pageId+ "/widget", newWidget);
+        function createWidget (newWidget){
+            return $http.post("/api/page/:pageId/widget", newWidget);
         }
 
         function findWidgetByWidgetId(id){
@@ -40,5 +38,11 @@
             return $http.get(url);
         }
 
+        function reorderWidget(pageId, start, end) {
+            console.log(pageId);
+            console.log(start);
+            console.log(end);
+            return $http.put("/page/"+pageId+"/widget");
+        }
     }
 })();

@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("WidgetChooserController", WidgetChooserController);
 
-    function WidgetChooserController($sce, $location, $routeParams, WidgetService) {
+    function WidgetChooserController($location, $routeParams, WidgetService) {
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.pageId = $routeParams.pageId;
@@ -12,9 +12,9 @@
 
         function createWidget(widgetType) {
             var newWidget = {
-               // _id: (new Date().getTime() + ""),
-                widgetType: widgetType,
-                pageId: vm.pageId,
+                // _id: (new Date().getTime() + ""),
+                type: widgetType,
+                _page: vm.pageId,
                 name: "Default"
             };
 
@@ -23,7 +23,7 @@
                 .then(function (response) {
                     var widget = response.data;
                     if (widget) {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
                     } else {
                         vm.error = "Unable to create the widget";
                     }
