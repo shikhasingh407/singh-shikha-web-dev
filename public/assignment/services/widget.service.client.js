@@ -42,7 +42,7 @@
             console.log(pageId);
             console.log(start);
             console.log(end);
-            return $http.put("/page/"+pageId+"/widget");
+            return $http.put("/page/" + pageId + "/widget?start=" + start+ "&end=" + end);
         }
     }
 })();

@@ -13,11 +13,32 @@ module.exports = function(){
     };
     return api;
 
-    function reorderWidget(pageId, widgets){
+    function reorderWidget(start, end, pageId) {
         return Widget
-            .update({_page: pageId},{
-                $set: widgets
-            }, false, true);
+            .find({_page: pageId}, function (err, widgets) {
+                widgets.forEach(function (widget) {
+                    if(start< end){
+                        if(widget.order === start){
+                            widget.order = end;
+                            widget.save();
+                        }
+                        else if(widget.order > start && widget.order <= end){
+                            widget.order--;
+                            widget.save();
+                        }
+                    } else{
+                        if(widget.order === start){
+                            widget.order = end;
+                            widget.save();
+                        }
+
+                        else if(widget.order < start && widget.order >= end){
+                            widget.order++;
+                            widget.save();
+                        }
+                    }
+                });
+            });
     }
 
     function findAllWidgetsForPage(pageId){

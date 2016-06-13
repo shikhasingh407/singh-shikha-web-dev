@@ -27,43 +27,20 @@ module.exports = function(app, models){
     app.put("/page/:pageId/widget",reorderWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
 
-    function reorderWidget(req, res){
-
+    function reorderWidget(req, res) {
         var pageId = req.params.pageId;
-        var start = req.params.start;
-        var end = req.params.end;
+        var start = parseInt(req.query.start);
+        var end =  parseInt(req.query.end);
 
         widgetModel
-            .findAllWidgetsForPage(pageId)
+            .reorderWidget(start, end, pageId)
             .then(
-                function(widgets) {
-                    widgets.forEach(function(widget){
-                        delete widget._id;
-                        if(widget.order==start){
-                            widget.order = end;
-                        }
-                        else if(widget.order>start && widget.order<=end){
-                            widget.order = widget.order-1;
-                        }
-                        else if(widget.order<start && widget.order>=end){
-                            widget.order = widget.order+1;
-                        }
-                    });
-
-                    widgetModel
-                        .reorderWidget(pageId, widgets)
-                        .then(
-                            function(response){
-                                res.json(widgets);
-                            },
-                            function(error){
-                                res.json({});
-                            });
+                function (stats) {
+                    res.sendStatus(200);
                 },
-                function(error){
-                    res.json({});
+                function (error) {
+                    res.sendStatus(400);
                 });
-
     }
 
     function uploadImage(req, res) {

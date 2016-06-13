@@ -10,6 +10,7 @@
         vm.websiteId = $routeParams.websiteId;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
+        vm.reorderWidget = reorderWidget;
 
         function init() {
             WidgetService
@@ -23,6 +24,19 @@
                 });
         }
         init();
+
+        function reorderWidget(start, end){
+            console.log(start+" "+end);
+            WidgetService
+                .reorderWidget(vm.pageId, start, end)
+                .then(
+                    function(response){
+                        init();
+                    },
+                    function(response){
+                        vm.error = "Unable to reorder widgets";
+                    });
+        }
 
         function getSafeHtml(widget){
             return $sce.trustAsHtml(widget.text);
