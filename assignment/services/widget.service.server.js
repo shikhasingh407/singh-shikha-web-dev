@@ -62,31 +62,62 @@ module.exports = function(app, models){
         var newWidget = {url: "/uploads/" + filename};
 
         widgetModel
-            .updateWidget(widgetId, newWidget)
+            .findWidgetByID(widgetId)
             .then(
-                function (stats) {
-                    res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+                function(widget) {
+                    widget.url= "/uploads/"+filename;
+                    widgetModel
+                        .updateWidget(widgetId, widget)
+                        .then(
+                            function(widget) {
+                                console.log(widget);
+                                res.json(widget);},
+                            function(error) {
+                                res.statusCode(400).send(error);
+                            }
+                        );
                 },
-                function (error) {
-                    res.sendStatus(400);
-
+                function(error) {
+                    res.statusCode(404).send(error);
                 }
             );
+
+        console.log(req.body);
+        res.redirect("/assignment/index.html#/user/"+req.body.userId+"/website/"+req.body.widgetId+"/page/"+req.body.pageId+"/widget/"+widgetId);
     }
 
     function deleteWidget(req, res){
         var id = req.params.widgetId;
         widgetModel
-            .deleteWidget(id)
-            .then(
-                function(stats){
-                    console.log(stats);
-                    res.send(200);
-                },
-                function(error){
-                    res.sendStatus(400);
-                }
-            );
+            .findWidgetById(id)
+            .then(function(widget){
+                widgetModel
+                    .findAllWidgetsForPage(widget._page)
+                    .then(function(widgets){
+                            widgetModel
+                                .reorderWidget(widget._page, widget.order, widgets.length)
+                                .then(
+                                    function(stats) {
+                                        widgetModel
+                                            .deleteWidget(id)
+                                            .then(
+                                                function(stats){
+                                                    res.sendStatus(200);
+                                                },
+                                                function(error){
+                                                    res.statusCode(400).send(error);
+                                                });
+                                    },
+                                    function(error){
+                                        res.statusCode(400).send(error);
+                                    });
+                        },
+                        function(error){
+                            res.statusCode(400).send(err);
+                        });
+            },function(err){
+                res.statusCode(404).send(err);
+            });
         // for(var i in widgets){
         //     if(widgets[i]._id === id){
         //         widgets.splice(i, 1);
@@ -123,15 +154,16 @@ module.exports = function(app, models){
 
     function createWidget(req, res){
         var widget = req.body;
+        var pageId = req.params.pageId;
+
         widgetModel
-            .createWidget(widget)
+            .createWidget(pageId, widget)
             .then(
                 function(widget) {
-                    console.log(widget);
                     res.json(widget);
                 },
-                function(error) {
-                    res.sendStatus(400);
+                function(err){
+                    res.statusCode(400).send(err);
                 }
             );
         // widgets.push(widget);

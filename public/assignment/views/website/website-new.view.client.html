@@ -21,11 +21,15 @@
     </div>
 </nav>
 
+<div ng-show="model.error"
+     class="alert alert-danger">{{model.error}}</div>
+
 <div class="container">
     <form role="form">
         <div class="form-group">
             <label for="name">Website Name:</label>
-            <input ng-model="name" type="text" class="form-control" id="name" placeholder="Shikha">
+            <span ng-show="model.myForm.name.$invalid">
+            <input ng-model="name" type="text" class="form-control" id="name" placeholder="Shikha" required>
         </div>
         <div class="form-group">
             <label for="desc">Website Description:</label>
