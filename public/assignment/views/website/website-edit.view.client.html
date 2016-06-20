@@ -24,23 +24,39 @@
 
 
 <div class="container">
-    <div ng-show="model.error"
-         class="alert alert-danger">{{model.error}}</div>
+    <div ng-if="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
 
-    <form role="form">
+    <form name="myForm">
         <div class="form-group">
-            <label for="name">Website Name:</label>
-             <span ng-show="model.myForm.name.$invalid">
-                <h1>{{model.alert}}</h1>
-                 </span>
-            <input ng-model="model.website.name" type="text" class="form-control" id="name" placeholder="Name">
+            <label for="name">Website Name</label>
+            <input ng-model="model.website.name" required
+                   ng-class="{ 'error-when' : submitted && myForm.name.$error.required }"
+                   name="name"
+                   type="text"
+                   class="form-control"
+                   id="name"
+                   placeholder="Google"
+                   value="Facebook">
         </div>
+        <span ng-show="submitted && myForm.name.$error.required"
+              class="err">
+            *Required Field
+        </span>
         <div class="form-group">
-            <label for="desc">Website Description:</label>
-            <textarea ng-model="model.website.description" rows="4" type="desc" class="form-control" id="desc" placeholder="Description"></textarea>
+            <label for="descr">Website Description</label>
+            <textarea ng-model="model.website.desc"
+                      class="form-control"
+                      id="descr"
+                      placeholder="Google is a search engine ..."
+                      rows="4">
+            </textarea>
         </div>
-        <a class="btn btn-danger btn-block" ng-click="model.deleteWebsite()">Delete</a>
     </form>
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteWebsite()">Delete</a>
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -22,34 +22,37 @@
 </nav>
 
 <div class="container">
-    <div ng-show="model.error"
-         class="alert alert-danger">{{model.error}}</div>
-
+    <div ng-if="model.error"
+         class="alert alert-danger"
+         role="alert">
+        {{model.error}}
+    </div>
     <form name="myForm">
         <div class="form-group">
-            <label for="page-name">Name</label>
-            <span ng-show="myForm.name.$invalid">
-                <h1>{{model.alert}}</h1>
-            </span>
-            <input ng-model="name"
-                   type="text"
+            <label for="name">Name</label>
+            <input ng-model="name" required
                    name="name"
-                   class="form-control"
-                   id="page-name"
-                   placeholder="Page Name" required/>
-        </div>
-        <div class="form-group">
-            <label for="page-title">Title</label>
-            <input ng-model="title"
                    type="text"
                    class="form-control"
-                   id="page-title"
-                   placeholder="Page Title"/>
+                   id="name"
+                   placeholder="Page Name">
+        </div>
+        <span ng-show="submitted && myForm.name.$error.required"
+              class="err">
+            *Required Field
+        </span>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input ng-model="title"
+                   type="textarea"
+                   class="form-control"
+                   id="title"
+                   placeholder="Page Title">
         </div>
     </form>
-
-
 </div>
+
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">

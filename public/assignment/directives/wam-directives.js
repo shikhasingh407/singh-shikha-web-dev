@@ -13,7 +13,7 @@
             $(".container")
                 .sortable({
                     axis : 'y',
-                    sort: function(event, ui) {
+                    start: function(event, ui) {
                         start = ui.item.index();
                         console.log("Start - " +start);
                     },

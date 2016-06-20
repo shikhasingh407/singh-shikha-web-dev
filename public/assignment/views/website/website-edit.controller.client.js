@@ -36,7 +36,7 @@
                     });
             }
             else {
-                vm.error = "Fill all the required fields";
+                vm.error = " Please fill all the required fields";
             }
 
         }

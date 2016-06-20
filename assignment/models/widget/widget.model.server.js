@@ -23,7 +23,7 @@ module.exports = function(){
                             widget.save();
                         }
                         else if(widget.order > start && widget.order <= end){
-                            widget.order--;
+                            widget.order = widget.order - 1;
                             widget.save();
                         }
                     } else{
@@ -33,7 +33,7 @@ module.exports = function(){
                         }
 
                         else if(widget.order < start && widget.order >= end){
-                            widget.order++;
+                            widget.order = widget.order + 1;
                             widget.save();
                         }
                     }

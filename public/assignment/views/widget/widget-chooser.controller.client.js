@@ -17,7 +17,6 @@
                 _page: vm.pageId,
                 name: "Default"
             };
-
             WidgetService
                 .createWidget(newWidget)
                 .then(function (response) {

@@ -89,43 +89,16 @@ module.exports = function(app, models){
     function deleteWidget(req, res){
         var id = req.params.widgetId;
         widgetModel
-            .findWidgetById(id)
-            .then(function(widget){
-                widgetModel
-                    .findAllWidgetsForPage(widget._page)
-                    .then(function(widgets){
-                            widgetModel
-                                .reorderWidget(widget._page, widget.order, widgets.length)
-                                .then(
-                                    function(stats) {
-                                        widgetModel
-                                            .deleteWidget(id)
-                                            .then(
-                                                function(stats){
-                                                    res.sendStatus(200);
-                                                },
-                                                function(error){
-                                                    res.statusCode(400).send(error);
-                                                });
-                                    },
-                                    function(error){
-                                        res.statusCode(400).send(error);
-                                    });
-                        },
-                        function(error){
-                            res.statusCode(400).send(err);
-                        });
-            },function(err){
-                res.statusCode(404).send(err);
-            });
-        // for(var i in widgets){
-        //     if(widgets[i]._id === id){
-        //         widgets.splice(i, 1);
-        //         res.sendStatus(200);
-        //         return;
-        //     }
-        // }
-        // res.sendStatus(400);
+            .deleteWidget(id)
+            .then(
+                function(stats){
+                    console.log(stats);
+                    res.send(200);
+                },
+                function(error){
+                    res.sendStatus(400);
+                }
+            );
     }
 
     function updateWidget(req, res){
@@ -154,10 +127,9 @@ module.exports = function(app, models){
 
     function createWidget(req, res){
         var widget = req.body;
-        var pageId = req.params.pageId;
 
         widgetModel
-            .createWidget(pageId, widget)
+            .createWidget(widget)
             .then(
                 function(widget) {
                     res.json(widget);

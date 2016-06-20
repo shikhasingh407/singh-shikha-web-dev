@@ -29,7 +29,7 @@
             }
 
             else {
-                vm.error = "You did not fill all the required fields!!";
+                vm.error = "Please fill all the required fields!";
             }
         }
 

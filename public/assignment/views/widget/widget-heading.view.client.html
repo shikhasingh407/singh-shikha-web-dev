@@ -11,7 +11,7 @@
                 <strong>Widget Edit</strong>
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget()" class="navbar-link">
+                <a ng-click="myForm.$valid && model.updateWidget(); submitted= true" class="navbar-link">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -22,13 +22,11 @@
 </nav>
 
 <div class="container">
-    <form role="form">
+    <form name="myForm" role="form">
         <div class="form-group">
             <label for="name">Name:</label>
-             <span ng-show="model.myForm.name.$invalid">
-                <h1>{{model.alert}}</h1>
-                 </span>
-            <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Shikha Singh">
+            <input ng-class="{ 'error-when' : submitted && myForm.name.$error.required }" ng-model="model.widget.name" name="name" type="text" class="form-control" id="name" placeholder="Shikha Singh" required/>
+            <span ng-show="submitted && myForm.name.$error.required" class="err">*Required Field</span>
         </div>
         <div class="form-group">
             <label for="text">Text:</label>

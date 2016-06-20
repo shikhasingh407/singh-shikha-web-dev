@@ -31,7 +31,7 @@
     <form name="myForm" role="form">
         <div class="form-group">
             <label for="name">Website Name</label>
-            <input name="name" ng-model="name" required type="text" class="form-control" id="name" placeholder="Google">
+            <input ng-class="{ 'error-when' : submitted && myForm.name.$error.required }" name="name" ng-model="name" required type="text" class="form-control" id="name" placeholder="Google">
         <span ng-show="submitted && myForm.name.$error.required"
               class="err">
             *Required Field
