@@ -15,8 +15,10 @@
                         $location.url("/user/"+ user._id);
                     } else{
                         vm.error = "User not found";
-                    }
-                });
+                    }},
+                    function(error){
+                        vm.error = "User not found";
+                    });
         }
     }
 })();

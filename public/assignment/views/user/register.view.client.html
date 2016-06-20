@@ -7,7 +7,8 @@
 
     <div class="form-group" ng-form name="myForm">
         <h1>Register</h1>
-        <input ng-model="username" required
+        <input ng-class="{ 'has-error' : myForm.username.$invalid &&  submitted }"
+               ng-model="username" required
                name="username"
                class="form-control"
                placeholder="username"
@@ -16,7 +17,8 @@
               class="err">
             *Required Field
         </span>
-        <input ng-model="password" required
+        <input ng-class="{ 'has-error' : myForm.password.$invalid &&  submitted }"
+               ng-model="password" required
                name="password"
                class="form-control"
                placeholder="password"
@@ -25,7 +27,8 @@
               class="err">
             *Required Field
         </span>
-        <input ng-model="vpassword" required
+        <input ng-class="{ 'has-error' : myForm.vpassword.$invalid &&  submitted }"
+               ng-model="vpassword" required
                name="vpassword"
                class="form-control"
                placeholder="verify password"

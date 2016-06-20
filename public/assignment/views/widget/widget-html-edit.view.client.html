@@ -21,10 +21,17 @@
 </nav>
 
 <div class="container">
+    <div ng-show="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
     <form role="form">
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
+                <span ng-show="model.myForm.name.$invalid">
+                <h6>{{model.alert}}</h6>
+            </span>
                 <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Gizmodo">
             </div>
             <label for="html">HTML</label>

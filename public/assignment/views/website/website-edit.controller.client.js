@@ -21,13 +21,24 @@
         }
         init();
 
-        function updateWebsite() {
-            var result = WebsiteService.updateWebsite(vm.websiteId, vm.website);
-            if(result) {
-                $location.url("/user/"+vm.userId+ "/website/");
-            } else {
-                vm.error= "Unable to update the website";
+        function updateWebsite(newWebsite){
+            if(newWebsite.name)
+            {
+                WebsiteService
+                    .updateWebsite(vm.websiteId,newWebsite)
+                    .then(function(response){
+                        if(response.data) {
+                            $location.url("/user/"+vm.userId+"/website");
+                        }
+                        else {
+                            vm.error="Unable to update website";
+                        }
+                    });
             }
+            else {
+                vm.error = "Fill all the required fields";
+            }
+
         }
         
         function deleteWebsite (websiteId) {

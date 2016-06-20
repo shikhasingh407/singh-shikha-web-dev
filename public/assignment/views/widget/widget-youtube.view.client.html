@@ -22,9 +22,16 @@
 </nav>
 
 <div class="container">
+    <div ng-show="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
     <form role="form">
         <div class="form-group">
             <label for="name">Name:</label>
+            <span ng-show="model.myForm.name.$invalid">
+                <h6>{{model.alert}}</h6>
+            </span>
             <input ng-model="model.widget.name" type="text" class="form-control" id="name" placeholder="Shikha Singh">
         </div>
         <div class="form-group">
@@ -37,6 +44,9 @@
         </div>
         <div class="form-group">
             <label for="width">Width:</label>
+            <span ng-show="model.myForm.width.$invalid">
+                <h6>{{model.widthalert}}</h6>
+            </span>
             <input ng-model="model.widget.width" type="text" class="form-control" id="width" placeholder="100%">
             <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
         </div>

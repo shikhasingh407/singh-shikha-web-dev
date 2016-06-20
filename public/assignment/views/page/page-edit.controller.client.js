@@ -21,14 +21,28 @@
         }
         init();
 
-        function updatePage() {
-            var result = PageService.updatePage(vm.pageId, vm.page);
-            if(result) {
-                $location.url("/user/"+vm.userId+ "/website/"+vm.websiteId+"/page");
-            } else {
-                vm.error= "Unable to update the page";
+        function updatePage(newPage){
+            if(newPage.name)
+            {
+                PageService
+                    .updatePage(vm.pageId,newPage)
+                    .then(function(response){
+                        var updatePage = response.data;
+                        if(updatePage) {
+                            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                        }
+                        else {
+                            vm.error="Unable to update page";
+                        }
+                    });
             }
+            else
+            {
+                vm.error = "Please fill all the required fields";
+            }
+
         }
+
 
         // PageService.updatePage(vm.pageId, newPage);
         

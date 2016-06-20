@@ -25,13 +25,14 @@
 
         function updateWidget() {
             WidgetService
-                .updateWidget(vm.widgetId, vm.widget)
-                    .then(function(response){
-                        if(response.data)
-                            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    .updateWidget(vm.widgetId, vm.widget)
+                    .then(function (response) {
+                        if (response.data)
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                         else
                             vm.error = "Unable to update";
                     });
+
         }
 
         function deleteWidget() {

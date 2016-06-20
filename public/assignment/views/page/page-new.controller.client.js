@@ -10,22 +10,30 @@
         vm.createPage = createPage;
 
         function createPage(name, title){
-            var newPage = {
-               // _id: (new Date()).getTime()+"",
-                name: name,
-                title: title
+            if(name)
+            {
+                var newPage = {
+                    // _id: (new Date()).getTime()+"",
+                    name: name,
+                    title: title,
+                    _website: vm.websiteId
+                };
+                PageService
+                    .createPage(vm.websiteId,newPage)
+                    .then(function(response){
+                        var newWeb = response.data;
+                        if(newWeb) {
+                            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                        }
+                        else {
+                            vm.error="Unable to create page";
+                        }
+                    });
+            }
+            else {
+                vm.error = "You did not fill all the required fields!!";
+            }
 
-            };
-
-            PageService
-                .createPage(vm.websiteId, newPage)
-                .then(function(response){
-                    var newPage = response.data;
-                    if(newPage){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-                    } else{
-                        vm.error = "Unable to create the page";
-                    }
-                });
         }
-    }})();
+    }
+})();
