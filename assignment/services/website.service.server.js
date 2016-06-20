@@ -22,7 +22,6 @@ module.exports = function(app, models){
             .deleteWebsite(id)
             .then(
                 function(stats) {
-                    console.log(stats);
                     res.send(200);
                 },
                 function(error) {

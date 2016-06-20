@@ -40,14 +40,19 @@
             }
 
         }
-        
-        function deleteWebsite (websiteId) {
-            var result = WebsiteService.deleteWebsite(vm.websiteId);
-            if(result) {
-                $location.url("/user/"+vm.userId-+ "/website");
-            } else {
-                vm.error= "Unable to delete the website";
-            }
+
+        function deleteWebsite () {
+            console.log(vm.userId);
+            WebsiteService
+                .deleteWebsite(vm.websiteId)
+                .then(function (response) {
+                    var website = response.data;
+                    if(website) {
+                        $location.url("/user/"+ vm.userId + "/website");
+                    } else {
+                        vm.error= "Unable to delete the website";
+                    }
+                });
         }
     }
 })();
